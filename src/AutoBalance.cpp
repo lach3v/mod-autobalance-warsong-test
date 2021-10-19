@@ -620,15 +620,16 @@ public:
         if (creatureABInfo->instancePlayerCount < maxNumberOfPlayers)
         {
             float inflectionValue  = (float)maxNumberOfPlayers;
-
-            if (instanceMap->IsHeroic())
+            if (Player)
             {
-                if (instanceMap->IsRaid())
+            if (Player->getClass() == CLASS_PRIEST)
+            {
+                if (instanceMap->IsHeroic())
                 {
-                    switch (instanceMap->GetMaxPlayers())
+                    if (instanceMap->IsRaid())
                     {
-                        if (Player)
-                        if (Player->getClass() == CLASS_PRIEST)
+                        switch (instanceMap->GetMaxPlayers())
+                        {
                             case 10:
                                 inflectionValue *= InflectionPointRaid10MHeroic;
                                 break;
@@ -638,8 +639,10 @@ public:
                                 break;
                             default:
                                 inflectionValue *= InflectionPointRaidHeroic;
-                    }
+                        }
+                   }
                 }
+            }
                 else
                     inflectionValue *= InflectionPointHeroic;
             }
