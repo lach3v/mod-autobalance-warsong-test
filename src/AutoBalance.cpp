@@ -628,11 +628,11 @@ public:
                     switch (instanceMap->GetMaxPlayers())
                     {
                         case 10:
-                             if (Player) 
+//                             if (Player) {
                                 if (player->getClass() == CLASS_PRIEST)
                                 inflectionValue *= InflectionPointRaid10MHeroic;
                                 break;
-                                
+//                                }
                             case 25:
                                 inflectionValue *= InflectionPointRaid25MHeroic;
                                 break;
